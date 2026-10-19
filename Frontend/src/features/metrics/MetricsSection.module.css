@@ -1,0 +1,86 @@
+.metrics {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metric {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.metric + .metric {
+  border-left: 1px solid currentColor;
+}
+
+.metricValue {
+  display: block;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 9vw, 7rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: var(--tracking-tight);
+  font-variant-numeric: tabular-nums;
+}
+
+.metricLabel {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(0.8rem, 1.3vw, 1rem);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.metricDescription {
+  max-width: 18rem;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .metrics {
+    padding: 4.5rem 0;
+  }
+
+  .metric {
+    padding: 0 0.75rem;
+  }
+
+  .metricValue {
+    margin-bottom: 1.5rem;
+    font-size: clamp(2.75rem, 12vw, 4.5rem);
+  }
+
+  .metricLabel {
+    min-height: 2.4em;
+    margin-bottom: 0.75rem;
+    font-size: clamp(0.65rem, 2.4vw, 0.8rem);
+    letter-spacing: 0.04em;
+  }
+
+  .metricDescription {
+    font-size: clamp(0.7rem, 2.6vw, 0.875rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .metric {
+    opacity: 1;
+    transform: none;
+  }
+}

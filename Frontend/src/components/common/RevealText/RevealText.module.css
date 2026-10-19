@@ -1,0 +1,15 @@
+.revealText {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.revealText span {
+  display: inline-block;
+  transform: translateY(100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revealText span {
+    transform: none;
+  }
+}

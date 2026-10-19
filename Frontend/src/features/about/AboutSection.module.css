@@ -1,0 +1,478 @@
+
+/* ==========================================
+   BIG LEAF MEDIA — ABOUT SECTION
+   Organic Editorial Layout
+========================================== */
+
+.about {
+  position: relative;
+  padding: clamp(90px, 10vw, 150px) 0;
+  background-color: var(--color-surface);
+  overflow: hidden;
+  isolation: isolate;
+  max-height: 900px;
+}
+
+/* ==========================================
+   LAYOUT
+========================================== */
+
+.layout {
+  margin-top: -10%;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 780px;
+  align-items: center;
+}
+
+/* ==========================================
+   TEXT CONTENT
+========================================== */
+
+.textContent {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 690px);
+  padding: 30px 0;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 2rem;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+
+  margin-bottom: 3rem;
+}
+
+
+/* Visible area for one heading */
+.headingViewport {
+  display: block;
+  position: relative;
+
+  height: 1.2em;
+  overflow: hidden;
+}
+
+/* Rotating text */
+.rotatingHeadline {
+  display: block;
+  width: fit-content;
+  white-space: nowrap;
+
+  will-change: transform, opacity;
+}
+
+
+.headingLine {
+  display: block;
+}
+
+.headingLine > span {
+  display: block;
+}
+
+/* ==========================================
+   ANNOTATIONS
+========================================== */
+
+.annotations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.annotation {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: #B33030;
+}
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+.descriptionBlock {
+  max-width: 590px;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  margin: 0 0 1.5rem;
+}
+
+.description:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+   PLANT IMAGE INTEGRATION
+========================================== */
+
+.imageSide {
+  position: absolute;
+
+  top: -10%;
+  right: -4.5%;
+
+  width: min(53vw, 770px);
+  height: 116%;
+
+  z-index: 1;
+  pointer-events: none;
+
+  /* Allow the plant to extend naturally */
+  overflow: visible;
+}
+
+.backgroundImage {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: transparent;
+  overflow: visible;
+}
+
+.backgroundImage img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: right center;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  transform-origin: right center;
+}
+
+/* Remove the photograph overlay */
+.overlay {
+  display: none;
+}
+
+/* Remove decorative lines for a cleaner look */
+.decorativeElements {
+  display: none;
+}
+
+/* ==========================================
+   LAPTOP
+========================================== */
+
+
+/* ==========================================
+   LAPTOP — 1200px
+========================================== */
+
+@media (max-width: 1200px) {
+  .about {
+    padding: 90px 0;
+    max-height: none;
+  }
+
+  .layout {
+    margin-top: 0;
+    min-height: 700px;
+  }
+
+  .textContent {
+    width: min(65%, 650px);
+  }
+
+  .heading {
+    font-size: clamp(2.8rem, 4.5vw, 4.6rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .headingViewport {
+    height: 1.25em;
+  }
+
+  .rotatingHeadline {
+    white-space: nowrap;
+  }
+
+  /* .imageSide {
+    width: 50vw;
+    right: -12%;
+    top: -5%;
+    height: 110%;
+  } */
+
+  .descriptionBlock {
+    max-width: 550px;
+  }
+}
+
+
+/* ==========================================
+   TABLET — 900px
+========================================== */
+
+@media (max-width: 900px) {
+  .about {
+    padding: 80px 0 60px;
+    max-height: none;
+  }
+
+  .layout {
+    margin-top: 0;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+  }
+
+  .textContent {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .heading {
+    max-width: 100%;
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  .headingViewport {
+    height: 1.3em;
+  }
+
+  .rotatingHeadline {
+    white-space: nowrap;
+  }
+
+  .annotations {
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .descriptionBlock {
+    max-width: 650px;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .imageSide { 
+    display: none;
+    /* position: relative;
+    top: auto;
+    right: auto;
+    width: min(100%, 520px);
+    height: 440px;
+    margin: 10px 0 0 auto;
+    flex-shrink: 0; */
+  } 
+
+  .backgroundImage {
+    position: absolute;
+    inset: 0;
+  }
+
+  .backgroundImage img {
+    object-fit: contain;
+    object-position: right center;
+  }
+}
+
+
+/* ==========================================
+   MOBILE — 600px
+========================================== */
+
+@media (max-width: 600px) {
+  .about {
+    padding: 65px 0 40px;
+    max-height: none;
+  }
+
+  .layout {
+    margin-top: 0;
+    gap: 20px;
+  }
+
+  .textContent {
+    width: 100%;
+    padding: 0;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .heading {
+    width: 100%;
+    font-size: clamp(1.6rem, 6.3vw, 2.5rem);
+    line-height: 1.15;
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.045em;
+  }
+
+  .headingViewport {
+    width: 100%;
+    height: 1.35em;
+    overflow: hidden;
+  }
+
+  .rotatingHeadline {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    white-space: nowrap;
+    letter-spacing: -0.045em;
+  }
+
+  .annotations {
+    gap: 0.75rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .annotation {
+    font-size: 0.65rem;
+    line-height: 1.5;
+  }
+
+  .descriptionBlock {
+    max-width: 100%;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  .imageSide {
+    display: none;
+    /* position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    height: 340px;
+    margin: 0; */
+  }
+
+  .backgroundImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .backgroundImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right top;
+  }
+}
+
+
+/* ==========================================
+   SMALL MOBILE — 380px
+========================================== */
+
+@media (max-width: 380px) {
+  .about {
+    padding: 55px 0 30px;
+  }
+
+  .heading {
+    font-size: clamp(1.4rem, 6.1vw, 1.65rem);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.05em;
+  }
+
+  .headingViewport {
+    height: 1.4em;
+  }
+
+  .rotatingHeadline {
+    white-space: nowrap;
+    letter-spacing: -0.05em;
+  }
+
+  .annotations {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .annotation {
+    font-size: 0.625rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .imageSide {
+    display: none;
+    /* height: 270px; */
+  }
+}
+
+
+/* ==========================================
+   REDUCED MOTION / ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .backgroundImage img,
+  .headingLine,
+  .headingLine > span,
+  .eyebrow,
+  .annotation,
+  .rotatingHeadline,
+  .description {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .rotatingHeadline {
+    will-change: auto;
+  }
+}

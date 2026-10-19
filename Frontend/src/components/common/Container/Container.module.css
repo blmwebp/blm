@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+.containerSm {
+  max-width: var(--container-sm);
+}
+
+.containerMd {
+  max-width: var(--container-md);
+}
+
+.containerLg {
+  max-width: var(--container-lg);
+}
+
+.containerMax {
+  max-width: var(--container-max);
+}
