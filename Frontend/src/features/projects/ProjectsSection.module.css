@@ -1,25 +1,34 @@
+
+/* ==========================================
+   BIG LEAF MEDIA — PROJECTS SECTION
+   Natural Image Dimensions
+========================================== */
+
 .projects {
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: 100svh;
-  min-height: min(36rem, 100svh);
-  overflow: hidden;
+  height: auto;
+  min-height: 0;
   background: #17272d;
+  overflow: hidden;
 }
+
+/* ==========================================
+   SECTION HEADING
+========================================== */
 
 .header {
   position: absolute;
-  top: clamp(5.5rem, 10vh, 8rem);
+  top: clamp(3rem, 7vw, 7rem);
   left: var(--page-gutter);
-  z-index: 2;
+  z-index: 4;
   pointer-events: none;
 }
 
 .sectionLabel {
   display: block;
   margin-bottom: 0.5rem;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.8);
   font-family: var(--font-display);
   font-size: var(--text-xs);
   font-weight: 600;
@@ -28,6 +37,7 @@
 }
 
 .sectionHeading {
+  margin: 0;
   color: #fff;
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 4rem);
@@ -36,80 +46,111 @@
   line-height: 1;
 }
 
-.projectPicture {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  will-change: transform, opacity;
-}
-
-.responsiveImage {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
+/* ==========================================
+   SLIDER LAYOUT
+========================================== */
 
 .sliderContainer {
   display: grid;
   width: 100%;
-  height: 100%;
-  grid-template-columns: minmax(0, 75fr) minmax(0, 25fr);
+  height: auto;
+  grid-template-columns:
+    minmax(0, 75fr)
+    minmax(0, 25fr);
+  align-items: stretch;
 }
+
+/* ==========================================
+   PROJECT IMAGE
+========================================== */
 
 .projectImage {
   position: relative;
+  width: 100%;
   min-width: 0;
-  height: 100%;
+  height: auto;
+  align-self: start;
   overflow: hidden;
   background: #26383d;
 }
 
+.projectPicture {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
 
+.responsiveImage,
 .projectImage img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-width: 100%;
+
+  object-fit: contain;
   object-position: center;
 }
 
+/* ==========================================
+   IMAGE ANIMATIONS
+========================================== */
+
 .imageNext {
-  animation: revealImageFromRight 800ms var(--ease-editorial) both;
+  animation: revealImageFromRight 800ms
+    var(--ease-editorial) both;
 }
 
 .imagePrevious {
-  animation: revealImageFromLeft 800ms var(--ease-editorial) both;
+  animation: revealImageFromLeft 800ms
+    var(--ease-editorial) both;
 }
 
+/* ==========================================
+   PROJECT INFO
+========================================== */
+
 .projectInfo {
+  position: relative;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
   min-width: 0;
-  height: 100%;
-  align-items: center;
+  min-height: 100%;
+  height: auto;
+
   padding: clamp(2rem, 4vw, 5rem);
+  padding-bottom: clamp(6rem, 8vw, 8rem);
+
   background: #17272d;
   color: #fff;
 }
 
 .projectCopy {
   width: 100%;
+  min-width: 0;
 }
 
 .copyNext {
-  animation: revealCopyFromRight 600ms var(--ease-editorial) both;
+  animation: revealCopyFromRight 600ms
+    var(--ease-editorial) both;
 }
 
 .copyPrevious {
-  animation: revealCopyFromLeft 600ms var(--ease-editorial) both;
+  animation: revealCopyFromLeft 600ms
+    var(--ease-editorial) both;
 }
+
+/* ==========================================
+   PROJECT TYPOGRAPHY
+========================================== */
 
 .projectNumber {
   display: block;
-  margin-bottom: clamp(2rem, 8vh, 5.5rem);
+  margin-bottom: clamp(2rem, 5vw, 4rem);
   color: #fff;
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 4rem);
@@ -144,6 +185,7 @@
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 1.08;
+  overflow-wrap: break-word;
 }
 
 .projectDescription {
@@ -164,44 +206,21 @@
   letter-spacing: 0.08em;
 }
 
-.navButton {
-  position: absolute;
-  top: 50%;
-  z-index: 3;
-  display: flex;
-  width: 3.25rem;
-  height: 3.25rem;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: var(--radius-full);
-  background: rgba(14, 24, 28, 0.36);
-  color: #fff;
-  cursor: pointer;
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  line-height: 1;
-  backdrop-filter: blur(8px);
-  transform: translateY(-50%);
-  transition:
-    color var(--duration-fast) var(--ease-out),
-    background-color var(--duration-fast) var(--ease-out),
-    border-color var(--duration-fast) var(--ease-out);
-}
-
-.projectInfo {
-  position: relative;
-  padding-bottom: 6rem;
-}
+/* ==========================================
+   VIEW ALL PROJECTS
+========================================== */
 
 .viewAllProjects {
   position: absolute;
+  right: clamp(1.5rem, 3vw, 3rem);
   bottom: 2rem;
-  right: 2rem;
 
   display: inline-flex;
   align-items: center;
   gap: 10px;
+
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
   color: #fff;
   font-family: var(--font-display);
@@ -210,15 +229,15 @@
   text-decoration: none;
   white-space: nowrap;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  padding-bottom: 6px;
-
-  transition: color 0.3s ease, border-color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .viewAllProjects:hover {
   color: #e5a0a0;
   border-color: #b33030;
+  text-decoration: none;
 }
 
 .viewAllProjects span {
@@ -229,10 +248,43 @@
   transform: translate(3px, -3px);
 }
 
+/* ==========================================
+   NAVIGATION BUTTONS
+========================================== */
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+
+  display: flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  background: rgba(14, 24, 28, 0.5);
+  color: #fff;
+
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  line-height: 1;
+
+  backdrop-filter: blur(8px);
+  transform: translateY(-50%);
+
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
 
 .navButton:hover {
-  border-color: #fff;
   background: #fff;
+  border-color: #fff;
   color: #17272d;
 }
 
@@ -241,19 +293,29 @@
   outline-offset: 4px;
 }
 
+.navButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .previousButton {
   left: clamp(1rem, 2vw, 2rem);
 }
 
 .nextButton {
-  left: calc(75% - 5.25rem);
+  right: clamp(1rem, 2vw, 2rem);
 }
+
+/* ==========================================
+   IMAGE REVEAL ANIMATIONS
+========================================== */
 
 @keyframes revealImageFromRight {
   from {
     opacity: 0.35;
     transform: translateX(2.5rem) scale(1.025);
   }
+
   to {
     opacity: 1;
     transform: translateX(0) scale(1);
@@ -265,6 +327,7 @@
     opacity: 0.35;
     transform: translateX(-2.5rem) scale(1.025);
   }
+
   to {
     opacity: 1;
     transform: translateX(0) scale(1);
@@ -276,6 +339,7 @@
     opacity: 0;
     transform: translateX(1.25rem);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -287,38 +351,31 @@
     opacity: 0;
     transform: translateX(-1.25rem);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
+/* ==========================================
+   SMALL LAPTOP — 1200px
+========================================== */
 
-/* =========================================
-   LAPTOP / TABLET LANDSCAPE
-   901px – 1200px
-========================================= */
-
-@media (max-width: 1200px) and (min-width: 901px) {
+@media (max-width: 1200px) {
   .sliderContainer {
-    grid-template-columns: minmax(0, 68fr) minmax(0, 32fr);
-  }
-
-  .nextButton {
-    left: calc(68% - 5.25rem);
+    grid-template-columns:
+      minmax(0, 68fr)
+      minmax(0, 32fr);
   }
 
   .projectInfo {
-    padding: clamp(1.5rem, 3vw, 3rem);
+    padding: 2rem;
+    padding-bottom: 6rem;
   }
 
   .projectNumber {
-    font-size: clamp(2rem, 3.5vw, 3.25rem);
     margin-bottom: 2rem;
-  }
-
-  .projectTitle {
-    font-size: clamp(1.75rem, 2.8vw, 3rem);
   }
 
   .projectDescription {
@@ -327,109 +384,104 @@
   }
 }
 
-
-/* =========================================
-   TABLET
-   641px – 900px
-========================================= */
+/* ==========================================
+   TABLET — 900px
+========================================== */
 
 @media (max-width: 900px) {
-  .projects {
-    height: auto;
-    min-height: 100svh;
+  .sliderContainer {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
   }
 
-   .projectPicture {
+  .projectImage {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
 
-    .projectInfo {
+  .projectPicture {
+    width: 100%;
+    height: auto;
+  }
+
+  .responsiveImage {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .projectInfo {
+    min-height: 280px;
+    padding: 2rem clamp(1.5rem, 5vw, 4rem);
     padding-bottom: 5.5rem;
+  }
+
+  .projectNumber {
+    margin-bottom: 1.5rem;
   }
 
   .viewAllProjects {
     right: clamp(1.5rem, 5vw, 4rem);
     bottom: 1.75rem;
   }
+}
 
-  .responsiveImage {
-    object-position: center center;
+/* ==========================================
+   MOBILE — 640px
+========================================== */
+
+@media (max-width: 640px) {
+  .header {
+    top: 2rem;
+  }
+
+  .sectionHeading {
+    font-size: clamp(2rem, 7vw, 3rem);
   }
 
   .sliderContainer {
     display: grid;
-    height: auto;
-    min-height: 100svh;
-
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: clamp(340px, 55svh, 600px) auto;
+    grid-template-rows: auto auto;
   }
 
-  .projectImage {
+  .projectImage,
+  .projectPicture {
     width: 100%;
-    height: 100%;
-    min-height: 0;
-  }
-
-  .projectImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .projectInfo {
     height: auto;
-    min-height: 280px;
-    padding: 2rem clamp(1.5rem, 5vw, 4rem);
-    align-items: flex-start;
-  }
-
-  .projectNumber {
-    margin-bottom: 1.5rem;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-  }
-
-  .projectTitle {
-    font-size: clamp(2rem, 5vw, 3.25rem);
-  }
-
-  .navButton {
-    top: calc(clamp(340px, 55svh, 600px) / 2);
-    width: 3rem;
-    height: 3rem;
-  }
-
-  .previousButton {
-    left: var(--page-gutter);
-  }
-
-  .nextButton {
-    left: auto;
-    right: var(--page-gutter);
-  }
-}
-
-
-/* =========================================
-   MOBILE
-   421px – 640px
-========================================= */
-
-@media (max-width: 640px) {
-  .projects {
-    height: auto;
-    min-height: 100svh;
   }
 
   .responsiveImage {
-    object-fit: cover;
-    object-position: center center;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
   .projectInfo {
-    padding-bottom: 5rem;
+    min-height: 260px;
+    padding: 1.75rem var(--page-gutter);
+    padding-bottom: 5.5rem;
+  }
+
+  .projectNumber {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .projectTitle {
+    font-size: clamp(1.75rem, 6vw, 2.75rem);
+  }
+
+  .projectDescription {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-top: 1rem;
+  }
+
+  .navButton {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.25rem;
   }
 
   .viewAllProjects {
@@ -437,103 +489,15 @@
     bottom: 1.5rem;
     font-size: 0.8rem;
   }
-  
-  .sliderContainer {
-    height: auto;
-    min-height: 100svh;
-
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: clamp(280px, 48svh, 430px) auto;
-  }
-
-  .projectImage {
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-  }
-
-  .projectImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .projectInfo {
-    height: auto;
-    min-height: 280px;
-    padding: 1.75rem var(--page-gutter) 2.5rem;
-  }
-
-  .header {
-    top: clamp(4.5rem, 10svh, 6rem);
-  }
-
-  .sectionHeading {
-    font-size: clamp(2.2rem, 7vw, 3.25rem);
-  }
-
-  .projectNumber {
-    font-size: 2.5rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .projectTitle {
-    font-size: clamp(1.8rem, 6vw, 2.75rem);
-  }
-
-  .projectDescription {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-top: 1rem;
-  }
-
-  .navButton {
-    top: calc(clamp(280px, 48svh, 430px) / 2);
-    width: 2.75rem;
-    height: 2.75rem;
-    font-size: 1.25rem;
-  }
-
-  .previousButton {
-    left: var(--page-gutter);
-  }
-
-  .nextButton {
-    right: var(--page-gutter);
-    left: auto;
-  }
 }
 
-
-/* =========================================
-   SMALL MOBILE
-   320px – 420px
-========================================= */
+/* ==========================================
+   SMALL MOBILE — 420px
+========================================== */
 
 @media (max-width: 420px) {
-  .projects {
-    height: auto;
-    min-height: 100svh;
-  }
-
-  .sliderContainer {
-    grid-template-rows: clamp(240px, 42svh, 350px) auto;
-  }
-
-  .projectImage {
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-  }
-
-  .projectInfo {
-    min-height: 260px;
-    padding: 1.5rem var(--page-gutter) 2rem;
-  }
-
   .header {
-    top: 4.5rem;
+    top: 1.5rem;
   }
 
   .sectionLabel {
@@ -544,9 +508,14 @@
     font-size: clamp(1.8rem, 8vw, 2.5rem);
   }
 
+  .projectInfo {
+    padding: 1.5rem var(--page-gutter);
+    padding-bottom: 5rem;
+  }
+
   .projectNumber {
-    font-size: 2rem;
     margin-bottom: 0.75rem;
+    font-size: 2rem;
   }
 
   .projectCategory {
@@ -558,9 +527,9 @@
   }
 
   .projectDescription {
+    margin-top: 0.75rem;
     font-size: 0.875rem;
     line-height: 1.55;
-    margin-top: 0.75rem;
   }
 
   .projectYear {
@@ -568,43 +537,14 @@
   }
 
   .navButton {
-    top: calc(clamp(240px, 42svh, 350px) / 2);
     width: 2.5rem;
     height: 2.5rem;
   }
 }
 
-
-/* =========================================
-   SHORT LANDSCAPE SCREENS
-========================================= */
-
-@media (max-width: 900px) and (max-height: 650px) {
-  .projects {
-    height: auto;
-    min-height: 100svh;
-  }
-
-  .sliderContainer {
-    height: auto;
-    min-height: 100svh;
-    grid-template-rows: clamp(240px, 60svh, 380px) auto;
-  }
-
-  .projectInfo {
-    height: auto;
-    min-height: 220px;
-  }
-
-  .navButton {
-    top: calc(clamp(240px, 60svh, 380px) / 2);
-  }
-}
-
-
-/* =========================================
+/* ==========================================
    REDUCED MOTION
-========================================= */
+========================================== */
 
 @media (prefers-reduced-motion: reduce) {
   .imageNext,
@@ -613,7 +553,8 @@
   .copyPrevious {
     animation: none;
   }
+
+  .projectPicture {
+    will-change: auto;
+  }
 }
-
-
-

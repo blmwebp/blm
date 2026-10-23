@@ -154,6 +154,14 @@
   padding-top: 0.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
+/* .footerTop {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+} */
 
 .copyright {
   margin: 0;

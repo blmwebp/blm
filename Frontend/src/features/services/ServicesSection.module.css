@@ -1,12 +1,14 @@
-
+/* BIG LEAF MEDIA — SERVICES | WHITE EDITORIAL THEME */
 .services {
   position: relative;
-  background: var(--color-surface-dark);
-  color: var(--color-text-inverse);
+  width: 100%;
   padding: clamp(90px, 10vw, 160px) 0;
+  background-color: var(--color-surface);
+  color: #17272d;
   overflow: hidden;
 }
 
+/* Header */
 .header {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
@@ -15,154 +17,100 @@
   align-items: end;
   margin-bottom: clamp(4rem, 8vw, 7rem);
 }
-
 .eyebrow {
   grid-column: 1 / -1;
+  margin: 0;
   color: #b33030;
   font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  margin: 0;
 }
-
 .sectionHeading {
   grid-column: 1;
-
+  margin: 0;
+  color: #17272d;
   font-family: var(--font-display);
   font-size: clamp(3rem, 5vw, 5.5rem);
   font-weight: 700;
-  line-height: 1.05;
   letter-spacing: var(--tracking-tight);
-  color: var(--color-text-inverse);
-  margin: 0;
+  line-height: 1.05;
 }
-
-
 .intro {
   grid-column: 2;
-
   max-width: 430px;
   margin: 0 0 0.4rem auto;
-
+  color: #505a5d;
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.4vw, 1.25rem);
   line-height: 1.7;
-  color: var(--color-text-inverse);
-  opacity: 0.75;
 }
 
+/* Services */
 .servicesList {
   display: flex;
   flex-direction: column;
-  gap: clamp(90px, 1vw, 170px);
+  gap: clamp(80px, 10vw, 150px);
 }
-
-/* Alternating layout */
-
 .serviceItem {
   display: grid;
-
-  /* Both columns are exactly equal */
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: clamp(40px, 6vw, 100px);
+  gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
-
-  width: 100%;
+  min-width: 0;
 }
+.reversed .serviceCard { order: 2; }
+.reversed .serviceContent { order: 1; }
 
-.reversed .serviceCard {
-  order: 2;
-}
-
-.reversed .serviceContent {
-  order: 1;
-}
-
-/* Premium visual card */
-
+/* Transparent PNG — no card treatment */
 .serviceCard {
   position: relative;
   width: 100%;
-  aspect-ratio: 5 / 4;
-  overflow: hidden;
-  border-radius: 3px;
-  background: #292b29;
-  isolation: isolate;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: auto;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  isolation: auto;
 }
-
 .cardMedia {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  inset: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: auto;
+  background: transparent;
+  overflow: visible;
 }
-
 .cardImage {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 560px;
+  height: auto;
+  object-fit: contain;
   object-position: center;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  transition: transform 500ms ease;
 }
+.serviceCard:hover .cardImage { transform: scale(1.035); }
+/* Image titles already appear in the description column. */
+.cardOverlay,
+.cardNumber,
+.cardTitle { display: none; }
+.serviceCard::before,
+.serviceCard::after,
+.cardMedia::before,
+.cardMedia::after { content: none; }
 
-.serviceCard:hover .cardImage {
-  transform: scale(1.08);
-}
-
-.serviceCard:hover {
-  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.3);
-}
-
-/* Gradual gradient for text contrast */
-
-.cardMedia::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.72),
-    rgba(0, 0, 0, 0.06) 65%
-  );
-  pointer-events: none;
-}
-
-.cardOverlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(24px, 3vw, 44px);
-  pointer-events: none;
-}
-
-.cardNumber {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 500;
-  color: #fff;
-  opacity: 0.85;
-}
-
-.cardTitle {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 5vw, 6rem);
-  font-weight: 700;
-  letter-spacing: -0.065em;
-  line-height: 0.95;
-  color: #fff;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-/* Description side */
-
+/* Text content */
 .serviceContent {
   display: flex;
   flex-direction: column;
@@ -170,7 +118,6 @@
   gap: 25px;
   min-width: 0;
 }
-
 .serviceLabel {
   color: #b33030;
   font-family: var(--font-display);
@@ -178,321 +125,114 @@
   font-weight: 600;
   letter-spacing: 0.14em;
 }
-
 .contentTitle {
-  color: var(--color-text-inverse);
+  margin: 0;
+  color: #17272d;
   font-family: var(--font-display);
   font-size: clamp(2.7rem, 4.8vw, 5.5rem);
   font-weight: 700;
   letter-spacing: -0.055em;
   line-height: 1;
-  margin: 0;
+  overflow-wrap: break-word;
 }
-
 .serviceDescription {
   max-width: 460px;
-  color: var(--color-text-inverse);
-  opacity: 0.72;
+  margin: 0;
+  color: #505a5d;
   font-family: var(--font-body);
   font-size: clamp(16px, 1.3vw, 19px);
   line-height: 1.8;
-  margin: 0;
 }
-
 .serviceAccent {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-top: 15px;
-  color: var(--color-text-inverse);
+  color: #17272d;
   font-family: var(--font-display);
   font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.15em;
 }
-
 .accentLine {
   display: block;
+  flex: 0 0 auto;
   width: 45px;
   height: 1px;
   background: #b33030;
-  transition: width 0.5s ease;
+  transition: width 500ms ease;
 }
-
-.serviceItem:hover .accentLine {
-  width: 85px;
-}
-
-/* Tablet */
-
-
-/* ==========================================
-   TABLET / SMALL LAPTOP — 1024px
-========================================== */
+.serviceItem:hover .accentLine { width: 85px; }
 
 @media (max-width: 1024px) {
-
   .header {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    column-gap: 2.5rem;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    column-gap: clamp(1.5rem, 3vw, 2.5rem);
     row-gap: 1.25rem;
-    align-items: end;
-    margin-bottom: 5rem;
+    margin-bottom: clamp(4rem, 7vw, 5.5rem);
   }
-
-  .eyebrow {
-    grid-column: 1 / -1;
-  }
-
-  .sectionHeading {
-    grid-column: 1;
-    font-size: clamp(2.75rem, 5vw, 4.5rem);
-    line-height: 1.05;
-  }
-
+  .sectionHeading { font-size: clamp(2.5rem, 4.5vw, 4.2rem); }
   .intro {
-    grid-column: 2;
-    max-width: 380px;
-    margin: 0 0 0.3rem auto;
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    line-height: 1.7;
+    max-width: 360px;
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
   }
-
-  .servicesList {
-    gap: 90px;
-  }
-
-  .serviceItem {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px;
-  }
-
-  .serviceCard {
-    width: 100%;
-    aspect-ratio: 5 / 4;
-  }
-
-  .cardTitle {
-    font-size: clamp(2.7rem, 5vw, 4rem);
-  }
-
-  .contentTitle {
-    font-size: clamp(2.3rem, 4vw, 3.5rem);
-  }
-
-  .serviceDescription {
-    font-size: 15px;
-    line-height: 1.75;
-  }
+  .servicesList { gap: clamp(4rem, 8vw, 6rem); }
+  .serviceItem { gap: clamp(1.5rem, 4vw, 3rem); }
+  .contentTitle { font-size: clamp(2rem, 3.5vw, 3.2rem); }
+  .serviceContent { gap: clamp(0.75rem, 1.8vw, 1.25rem); }
+  .serviceDescription { font-size: clamp(0.9rem, 1.4vw, 1rem); }
 }
 
-
-/* ==========================================
-   TABLET PORTRAIT / MOBILE — 768px
-========================================== */
-
 @media (max-width: 768px) {
-
-  .services {
-    padding: 80px 0;
-  }
-
-  /* Header */
+  .services { padding: 80px 0; }
   .header {
-    display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
     margin-bottom: 65px;
   }
-
-  .eyebrow {
-    grid-column: 1;
-    margin-bottom: 0.25rem;
-  }
-
-  .sectionHeading {
-    grid-column: 1;
-    font-size: clamp(2.7rem, 8vw, 4.5rem);
-    line-height: 1.05;
-    margin: 0;
-  }
-
-  .intro {
-    grid-column: 1;
-    max-width: 550px;
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
-  /* Services layout */
-  .servicesList {
-    gap: 75px;
-  }
-
-  .serviceItem {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-    width: 100%;
-  }
-
-  /* Card always appears before text */
+  .eyebrow,
+  .sectionHeading,
+  .intro { grid-column: 1; }
+  .sectionHeading { font-size: clamp(2.7rem, 8vw, 4.5rem); }
+  .intro { max-width: 550px; margin: 0; font-size: 1rem; }
+  .servicesList { gap: 75px; }
+  .serviceItem { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .serviceItem .serviceCard,
-  .reversed .serviceCard {
-    order: 1;
-  }
-
+  .reversed .serviceCard { order: 1; }
   .serviceItem .serviceContent,
-  .reversed .serviceContent {
-    order: 2;
-  }
-
-  /* Image cards */
-  .serviceCard {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 3px;
-  }
-
-  .cardMedia {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .cardImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .cardOverlay {
-    padding: 28px;
-  }
-
-  .cardTitle {
-    font-size: clamp(2.7rem, 9vw, 4.5rem);
-  }
-
-  /* Description content */
-  .serviceContent {
-    gap: 16px;
-    align-items: flex-start;
-  }
-
-  .serviceLabel {
-    font-size: 11px;
-  }
-
-  .contentTitle {
-    font-size: clamp(2.3rem, 7vw, 3.5rem);
-    line-height: 1.05;
-  }
-
-  .serviceDescription {
-    max-width: 100%;
-    font-size: 15px;
-    line-height: 1.75;
-  }
-
-  .serviceAccent {
-    margin-top: 10px;
-  }
+  .reversed .serviceContent { order: 2; }
+  .serviceCard { max-width: 520px; margin-inline: auto; }
+  .cardMedia { position: relative; height: auto; }
+  .cardImage { width: 100%; height: auto; object-fit: contain; }
+  .serviceContent { gap: 16px; }
+  .serviceLabel { font-size: 11px; }
+  .contentTitle { font-size: clamp(2.3rem, 7vw, 3.5rem); }
+  .serviceDescription { max-width: 100%; font-size: 15px; }
+  .serviceAccent { margin-top: 10px; }
 }
 
-
-/* ==========================================
-   SMALL MOBILE — 480px
-========================================== */
-
 @media (max-width: 480px) {
-
-  .services {
-    padding: 65px 0;
-  }
-
-  .header {
-    gap: 1.25rem;
-    margin-bottom: 50px;
-  }
-
-  .eyebrow {
-    font-size: 11px;
-  }
-
+  .services { padding: 65px 0; }
+  .header { gap: 1.25rem; margin-bottom: 50px; }
+  .eyebrow { font-size: 11px; }
   .sectionHeading {
     font-size: clamp(2.25rem, 10vw, 3rem);
     line-height: 1.08;
     letter-spacing: -0.05em;
   }
-
-  .intro {
-    font-size: 14px;
-    line-height: 1.75;
-    opacity: 0.8;
-  }
-
-  .servicesList {
-    gap: 60px;
-  }
-
-  .serviceItem {
-    gap: 22px;
-  }
-
-  .serviceCard {
-    aspect-ratio: 4 / 3;
-  }
-
-  .cardOverlay {
-    padding: 20px;
-  }
-
-  .cardNumber {
-    font-size: 13px;
-  }
-
-  .cardTitle {
-    font-size: clamp(2.3rem, 11vw, 3.5rem);
-    line-height: 0.95;
-  }
-
-  .serviceContent {
-    gap: 14px;
-  }
-
-  .serviceLabel {
-    font-size: 10px;
-  }
-
-  .contentTitle {
-    font-size: clamp(2rem, 8vw, 2.8rem);
-  }
-
-  .serviceDescription {
-    font-size: 14px;
-    line-height: 1.75;
-  }
-
-  .serviceAccent {
-    font-size: 10px;
-    gap: 12px;
-  }
-
-  .accentLine {
-    width: 35px;
-  }
+  .intro { font-size: 14px; line-height: 1.75; }
+  .servicesList { gap: 60px; }
+  .serviceItem { gap: 22px; }
+  .serviceCard { max-width: 100%; }
+  .serviceContent { gap: 14px; }
+  .serviceLabel { font-size: 10px; }
+  .contentTitle { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .serviceDescription { font-size: 14px; line-height: 1.75; }
+  .serviceAccent { font-size: 10px; gap: 12px; }
+  .accentLine { width: 35px; }
 }
 
-
-/* ==========================================
-   REDUCED MOTION
-========================================== */
-
 @media (prefers-reduced-motion: reduce) {
-
   .serviceCard,
   .cardImage,
   .accentLine,
@@ -501,13 +241,5 @@
     transition: none !important;
     animation: none !important;
   }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .serviceCard,
-  .cardImage,
-  .accentLine {
-    transition: none;
-  }
+  .serviceCard:hover .cardImage { transform: none; }
 }

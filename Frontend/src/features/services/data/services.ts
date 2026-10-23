@@ -3,9 +3,9 @@ import type { Service } from '../../../types';
 export const services: Service[] = [
   {
     id: '1',
-    title: 'Digital Experiences',
+    title: '',
     description: 'Websites, digital products and thoughtful interfaces that turn attention into action.',
-     image: '/images/services/ser1.png',
+     image: '/images/services/ser11.png',
   },
   {
     id: '2',

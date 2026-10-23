@@ -75,4 +75,8 @@ export const partners = [
     name: 'Nritara',
     image: '/images/partners/NRITARA_logo.png',
   },
+  {
+    name: 'Many More ....',
+    image: '/images/partners/Many_more.png',
+  },
 ];

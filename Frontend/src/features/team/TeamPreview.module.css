@@ -1,17 +1,29 @@
 .teamPreview {
   position: relative;
   display: flex;
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
   align-items: center;
+  min-height: 100svh;
+  height: auto;
+  width: 100%;
+  background: var(--color-surface);
   overflow: hidden;
-  background: #17272d;
-  color: #fff;
 }
 
+.previewLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+
+  width: min(100%, var(--container-max));
+  margin: 0 auto;
+  padding: clamp(7rem, 10vw, 10rem) var(--page-gutter);
+}
+
+
 .image {
-  position: absolute;
+  display: none;
+  /* position: absolute;
   inset: 0;
   background-image:
     linear-gradient(90deg, rgba(9, 18, 21, 0.78) 0%, rgba(9, 18, 21, 0.45) 52%, rgba(9, 18, 21, 0.12) 100%),
@@ -19,7 +31,7 @@
   background-position: center 38%;
   background-size: cover;
   transform: scale(1.01);
-  transition: transform 900ms var(--ease-editorial);
+  transition: transform 900ms var(--ease-editorial); */
 }
 
 .teamPreview:hover .image {
@@ -28,16 +40,17 @@
 
 .content {
   position: relative;
-  z-index: 1;
-  width: min(100%, var(--container-max));
-  margin: 0 auto;
-  padding: 8rem var(--page-gutter);
+  z-index: 2;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .eyebrow {
   display: block;
   margin-bottom: clamp(1rem, 3vh, 2rem);
-  color: rgba(255, 255, 255, 0.74);
+  color: #000000;
   font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: 500;
@@ -46,14 +59,48 @@
 }
 
 .heading {
-  max-width: 12ch;
-  margin: 0;
-  color: #fff;
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 9vw, 9rem);
-  font-weight: 600;
+  max-width: 100%;
+  font-size: clamp(3rem, 6vw, 7.5rem);
+  line-height: 1.05;
   letter-spacing: -0.07em;
-  line-height: 0.94;
+}
+
+
+.headingLine {
+  display: block;
+  white-space: nowrap;
+}
+
+.imageComposition {
+  position: relative;
+  width: 100%;
+  height: clamp(350px, 38vw, 650px);
+  min-width: 0;
+  isolation: isolate;
+}
+
+.teamImage {
+  position: absolute;
+  display: block;
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  will-change: transform, opacity;
+}
+
+.imageOne {
+  left: -8%;
+  top: 8%;
+  z-index: 2;
+}
+
+.imageTwo {
+  right: 10.5%;
+  top: 23.5%;
+  z-index: 1;
 }
 
 .viewTeam {
@@ -62,8 +109,8 @@
   gap: 1.25rem;
   margin-top: clamp(2rem, 6vh, 4rem);
   padding: 0 0 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-  color: #fff;
+  border-bottom: 1px solid #B33030;
+  color: #B33030;
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 500;
@@ -100,19 +147,115 @@
   letter-spacing: var(--tracking-widest);
 }
 
-@media (max-width: 640px) {
-  .image {
-    background-position: 58% center;
+@media (max-width: 1024px) {
+  .previewLayout {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 1rem;
   }
 
   .heading {
-    font-size: clamp(3rem, 15vw, 5.5rem);
+    font-size: clamp(2.5rem, 5.5vw, 5rem);
+  }
+
+  .imageComposition {
+    height: 420px;
+  }
+
+  .teamImage {
+    width: 80%;
+  }
+
+  .headingLine {
+    min-height: 1.1em;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .image,
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 640px) {
+   .teamPreview {
+    min-height: auto;
+  }
+
+  .previewLayout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+  }
+
+  .heading {
+    font-size: clamp(2.2rem, 8vw, 4rem);
+  }
+
+  .imageComposition {
+    width: 100%;
+    height: 360px;
+  }
+
+  .teamImage {
+    width: 70%;
+    height: 90%;
+  }
+
+  .imageOne {
+    left: -3%;
+  }
+
+  .imageTwo {
+    right: -3%;
+  }
+
+
+  .content {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .headingLine {
+    width: 100%;
+    min-height: 1.12em;
+    white-space: nowrap;
+  }
+
   .viewTeam {
-    transition: none;
+    margin-top: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .index {
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 380px) {
+  .heading {
+    font-size: clamp(1.9rem, 8vw, 3rem);
+  }
+
+  .imageComposition {
+    height: 270px;
+  }
+
+  .teamImage {
+    width: 75%;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .teamImage {
+    transform: none !important;
+    opacity: 1 !important;
+    will-change: auto;
   }
 }

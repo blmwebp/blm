@@ -9,9 +9,9 @@ import styles from './ServicesSection.module.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const serviceVisuals = [
-  '/images/services/ser1.png',
-  '/images/services/ser2.png',
-  '/images/services/ser3.jpg',
+  '/images/services/ser11.png',
+  '/images/services/ser22.png',
+  '/images/services/ser44.png',
 ];
 
 export const ServicesSection: React.FC = () => {

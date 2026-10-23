@@ -1,16 +1,21 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Link } from 'react-router-dom';
+
 import { projects } from './data/projects';
 import styles from './ProjectsSection.module.css';
-import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const ProjectsSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [slideDirection, setSlideDirection] = useState<'next' | 'previous'>('next');
+  const [slideDirection, setSlideDirection] = useState<
+    'next' | 'previous'
+  >('next');
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -37,43 +42,80 @@ export const ProjectsSection: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (projects.length <= 1) return;
+
+    if (
+      window.matchMedia('(prefers-reduced-motion: reduce)')
+        .matches
+    ) {
+      return;
+    }
 
     const timeout = window.setTimeout(() => {
       setSlideDirection('next');
       setCurrentIndex((index) => (index + 1) % projects.length);
-    }, 3000);
+    }, 5000);
 
     return () => window.clearTimeout(timeout);
   }, [currentIndex]);
 
-  const selectProject = (index: number, direction: 'next' | 'previous') => {
+  const selectProject = (
+    index: number,
+    direction: 'next' | 'previous'
+  ) => {
     if (index === currentIndex) return;
+
     setSlideDirection(direction);
     setCurrentIndex(index);
   };
 
   const nextSlide = () => {
-    selectProject((currentIndex + 1) % projects.length, 'next');
+    selectProject(
+      (currentIndex + 1) % projects.length,
+      'next'
+    );
   };
 
   const prevSlide = () => {
-    selectProject((currentIndex - 1 + projects.length) % projects.length, 'previous');
+    selectProject(
+      (currentIndex - 1 + projects.length) % projects.length,
+      'previous'
+    );
   };
 
   const currentProject = projects[currentIndex];
-  const imageAnimation = slideDirection === 'next' ? styles.imageNext : styles.imagePrevious;
-  const copyAnimation = slideDirection === 'next' ? styles.copyNext : styles.copyPrevious;
+
+  const imageAnimation =
+    slideDirection === 'next'
+      ? styles.imageNext
+      : styles.imagePrevious;
+
+  const copyAnimation =
+    slideDirection === 'next'
+      ? styles.copyNext
+      : styles.copyPrevious;
+
+  if (!currentProject) return null;
 
   return (
-    <section ref={sectionRef} id="projects" className={styles.projects}>
+    <section
+      ref={sectionRef}
+      id="projects"
+      className={styles.projects}
+    >
       <div className={styles.header}>
-        <span className={styles.sectionLabel}>LATEST</span>
-        <h2 className={styles.sectionHeading}>PROJECTS.</h2>
+        {/* <span className={styles.sectionLabel}>
+          LATEST
+        </span>
+
+        <h2 className={styles.sectionHeading}>
+          PROJECTS.
+        </h2> */}
       </div>
 
       <div className={styles.sliderContainer}>
 
+        {/* IMAGE — NATURAL ASPECT RATIO */}
         <div className={styles.projectImage}>
           <picture
             key={currentProject.id}
@@ -89,50 +131,81 @@ export const ProjectsSection: React.FC = () => {
             <img
               src={currentProject.thumbnail}
               alt={currentProject.title}
-              loading="lazy"
+              loading="eager"
               decoding="async"
-              width={1920}
-              height={1440}
               className={styles.responsiveImage}
             />
           </picture>
+
+          {/* NAVIGATION */}
+          <button
+            type="button"
+            className={`${styles.navButton} ${styles.previousButton}`}
+            onClick={prevSlide}
+            aria-label="Previous project"
+            disabled={projects.length <= 1}
+          >
+            <span aria-hidden="true">←</span>
+          </button>
+
+          <button
+            type="button"
+            className={`${styles.navButton} ${styles.nextButton}`}
+            onClick={nextSlide}
+            aria-label="Next project"
+            disabled={projects.length <= 1}
+          >
+            <span aria-hidden="true">→</span>
+          </button>
         </div>
 
-
-        <div className={styles.projectInfo} aria-live="polite">
-          <div key={currentProject.id} className={`${styles.projectCopy} ${copyAnimation}`}>
+        {/* PROJECT DETAILS */}
+        <div className={styles.projectInfo}>
+          <div
+            key={currentProject.id}
+            className={`${styles.projectCopy} ${copyAnimation}`}
+            aria-live="polite"
+            aria-atomic="true"
+          >
             <span className={styles.projectNumber}>
               {String(currentIndex + 1).padStart(2, '0')}
-              <span className={styles.projectCount}> / {String(projects.length).padStart(2, '0')}</span>
+
+              <span className={styles.projectCount}>
+                {' / '}
+                {String(projects.length).padStart(2, '0')}
+              </span>
             </span>
-            <span className={styles.projectCategory}>{currentProject.category}</span>
-            <h3 className={styles.projectTitle}>{currentProject.title}</h3>
+
+            <span className={styles.projectCategory}>
+              {currentProject.category}
+            </span>
+
+            <h3 className={styles.projectTitle}>
+              {currentProject.title}
+            </h3>
+
             {currentProject.description && (
-              <p className={styles.projectDescription}>{currentProject.description}</p>
+              <p className={styles.projectDescription}>
+                {currentProject.description}
+              </p>
             )}
+
             {currentProject.year && (
-              <span className={styles.projectYear}>{currentProject.year}</span>
+              <span className={styles.projectYear}>
+                {currentProject.year}
+              </span>
             )}
           </div>
-        </div>
-        <Link to="/projects" className={styles.viewAllProjects}>
-          View All Projects <span aria-hidden="true">↗</span>
-        </Link>
 
-        <button
-          className={`${styles.navButton} ${styles.previousButton}`}
-          onClick={prevSlide}
-          aria-label="Previous project"
-        >
-          <span aria-hidden="true">←</span>
-        </button>
-        <button
-          className={`${styles.navButton} ${styles.nextButton}`}
-          onClick={nextSlide}
-          aria-label="Next project"
-        >
-          <span aria-hidden="true">→</span>
-        </button>
+          <Link
+            to="/projects"
+            className={styles.viewAllProjects}
+          >
+            View All Projects
+            <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
+
       </div>
     </section>
   );

@@ -57,6 +57,7 @@ export const Footer: React.FC = () => {
   return (
     <footer ref={footerRef} className={styles.footer}>
       <Container>
+      <div className={styles.footerTop}></div>
         <div ref={contentRef} className={styles.footerContent}>
           <div className={styles.socialLinks} aria-label="Social media">
             {Object.entries(socialLinks).map(([platform, url]) => {
